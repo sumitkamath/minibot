@@ -402,11 +402,7 @@ client.on('message', message => {
         Promise.all(userPromises).then(users => {
           let msg = "\n";
           for (let j = 0; j < results.length; j++) {
-            for (let k = 0; k < users.length; k++) {
-              if (results[j].userId == users[k].id) {
-                msg.push(`${results[j].points} - ${users[k].username} \n`);
-              }
-            }
+            msg.push(`${results[j].points} - ${users[j].username} \n`);
           }
           msg += "\n";
           message.reply(msg);
