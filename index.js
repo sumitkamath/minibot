@@ -400,14 +400,15 @@ client.on('message', message => {
           userPromises.push(client.fetchUser(results[i].userId));
         }
         Promise.all(userPromises).then(users => {
-          let msg = [];
+          let msg = "\n";
           for (let j = 0; j < results.length; j++) {
-            for (let i = 0; i < users.length; i++) {
-              if (results[j].userId == users[i].id) {
-                msg.push(`${results[i].points} - ${users[i].username}`);
+            for (let k = 0; k < users.length; k++) {
+              if (results[j].userId == users[k].id) {
+                msg.push(`${results[j].points} - ${users[k].username} \n`);
               }
             }
           }
+          msg += "\n";
           message.reply(msg);
         });
       } else {
